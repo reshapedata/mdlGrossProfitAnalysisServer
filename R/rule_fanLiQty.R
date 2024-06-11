@@ -29,6 +29,10 @@ rule_fanLiQtyServer <- function(input,output,session,dms_token) {
 
   text_rule_fanLiQty_FExpireDate=tsui::var_date('text_rule_fanLiQty_FExpireDate')
 
+  text_rule_fanLiQty_FIndexCustomerName=tsui::var_text('text_rule_fanLiQty_FIndexCustomerName')
+
+  text_rule_fanLiQty_FRebateType=tsui::var_text('text_rule_fanLiQty_FRebateType')
+
 
   #查询
   shiny::observeEvent(input$btn_rule_fanLiQty_view,{
@@ -43,13 +47,14 @@ rule_fanLiQtyServer <- function(input,output,session,dms_token) {
     FIndexType =text_rule_fanLiQty_FIndexType()
     FStartRealQty = text_rule_fanLiQty_FStartRealQty()
     FEndRealQty = text_rule_fanLiQty_FEndRealQty()
-
     FUnit = text_rule_fanLiQty_FUnit()
     FRebateProduct=text_rule_fanLiQty_FRebateProduct()
     FRebateRate = text_rule_fanLiQty_FRebateRate()
     FEffectDate = text_rule_fanLiQty_FEffectDate()
     FExpireDate = text_rule_fanLiQty_FExpireDate()
-    mdlGrossProfitAnalysisPkg::rule_fanLiQty_add(token=dms_token,FBillNo =FBillNo ,FCustomerName =FCustomerName ,FIndexType = FIndexType,FStartRealQty = FStartRealQty,FEndRealQty =FEndRealQty ,FUnit = FUnit,FRebateProduct = FRebateProduct,FRebateRate =FRebateRate ,FEffectDate =FEffectDate ,FExpireDate = FExpireDate)
+    FIndexCustomerName=text_rule_fanLiQty_FIndexCustomerName()
+    FRebateType =text_rule_fanLiQty_FRebateType()
+    mdlGrossProfitAnalysisPkg::rule_fanLiQty_add(token=dms_token,FBillNo =FBillNo ,FCustomerName =FCustomerName ,FIndexType = FIndexType,FIndexCustomerName = FIndexCustomerName,FStartRealQty = FStartRealQty,FEndRealQty =FEndRealQty ,FUnit = FUnit,FRebateProduct = FRebateProduct,FRebateType = FRebateType,FRebateRate =FRebateRate ,FEffectDate =FEffectDate ,FExpireDate = FExpireDate)
     tsui::pop_notice('添加完成')
     })
 

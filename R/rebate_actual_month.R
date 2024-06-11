@@ -25,7 +25,7 @@ rebate_actual_monthServer <- function(input,output,session,dms_token) {
   shiny::observeEvent(input$btn_rebate_actual_month_select,{
     data=mdlGrossProfitAnalysisPkg::rebate_detailQty_actual_selectBymonth(dmstoken =dms_token )
     tsui::run_dataTable2(id ='rebate_actual_month_resultView' ,data =data )
-    tsui::run_download_xlsx(id = 'dl_rebate_actual_month',data = data,filename = '返利数量月度汇总表.xlsx')
+    tsui::run_download_xlsx(id = 'dl_rebate_actual_month',data = data,filename = '返利数量财务口径月度汇总表.xlsx')
 
 
 
