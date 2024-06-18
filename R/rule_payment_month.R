@@ -16,6 +16,8 @@ rule_payment_monthServer <- function(input,output,session,dms_token) {
 
   text_rule_payment_month_FContractNumber_delete=tsui::var_text('text_rule_payment_month_FContractNumber_delete')
   text_rule_payment_month_FContractNumber=tsui::var_text('text_rule_payment_month_FContractNumber')
+
+  text_rule_payment_month_FSaleOrgName=tsui::var_text('text_rule_payment_month_FSaleOrgName')
   text_rule_payment_month_FCustomerName=tsui::var_text('text_rule_payment_month_FCustomerName')
 
   text_rule_payment_month_Fyear=tsui::var_text('text_rule_payment_month_Fyear')
@@ -37,8 +39,9 @@ rule_payment_monthServer <- function(input,output,session,dms_token) {
     Fyear = text_rule_payment_month_Fyear()
     Fmonth = text_rule_payment_month_Fmonth()
     FPaymentAmount=text_rule_payment_month_FPaymentAmount()
-
+    FSaleOrgName=text_rule_payment_month_FSaleOrgName()
     mdlGrossProfitAnalysisPkg::rule_payment_month_add(token=dms_token,FContractNumber =FContractNumber ,
+                                                      FSaleOrgName=FSaleOrgName,
                                                       FCustomerName =FCustomerName ,
                                                       Fyear =Fyear ,
                                                       Fmonth = Fmonth,
