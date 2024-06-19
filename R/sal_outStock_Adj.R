@@ -24,12 +24,70 @@ sal_outStock_AdjServer <- function(input,output,session,dms_token) {
       filename=var_file_btn_sal_outStock_Adj()
       data <- readxl::read_excel(filename,
                                  col_types = c("date", "text", "text",
-                                               "text", "text", "text", "text", "numeric",
+                                               "text", "text", "text", "text", "numeric","text",
                                                "text", "text", "text", "text", "text",
                                                "text", "text", "numeric", "numeric",
                                                "numeric", "numeric", "numeric",
                                                "numeric", "numeric", "numeric",
                                                "text", "text"))
+      names(data) <-c('到货日期',
+                      '销售组织',
+                      '销售组',
+                      '销售员',
+                      '客户编码',
+                      '客户',
+                      '结算币别',
+                      '汇率',
+                      '客户物料名称',
+                      '物料编码',
+                      '物料名称',
+                      '行业',
+                      '单据编号',
+                      '单据状态',
+                      '单据类型',
+                      '库存单位',
+                      '实发数量',
+                      '单价',
+                      '含税单价',
+                      '税额',
+                      '金额',
+                      '价税合计',
+                      '金额（本位币）',
+                      '价税合计（本位币）',
+                      '是否赠品',
+                      '是否返利'
+      )
+
+
+      data <-data [, c('到货日期',
+                       '销售组织',
+                       '销售组',
+                       '销售员',
+                       '客户编码',
+                       '客户',
+                       '结算币别',
+                       '汇率',
+                       '物料编码',
+                       '物料名称',
+                       '行业',
+                       '单据编号',
+                       '单据状态',
+                       '单据类型',
+                       '库存单位',
+                       '实发数量',
+                       '单价',
+                       '含税单价',
+                       '税额',
+                       '金额',
+                       '价税合计',
+                       '金额（本位币）',
+                       '价税合计（本位币）',
+                       '是否赠品',
+                       '是否返利',
+                       '客户物料名称'
+      )]
+
+
       data = as.data.frame(data)
 
       data = tsdo::na_standard(data)

@@ -15,7 +15,7 @@ ca_receiveServer <- function(input,output,session,dms_token,erp_token) {
   #一般按纽,用于计数器显示
   var_text_ca_receive_year=tsui::var_text('text_ca_receive_year')
   var_text_ca_receive_month=tsui::var_text('text_ca_receive_month')
-
+#
 
   shiny::observeEvent(input$btn_ca_receive_select,{
 
