@@ -41,3 +41,31 @@ standardCost_managementServer <- function(input,output,session,dms_token) {
 
   })
 }
+#' 处理逻辑
+#'
+#' @param input 输入
+#' @param output 输出
+#' @param session 会话
+#' @param dms_token 口令
+#' @param erp_token
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' standardCost_managementServer()
+standardCost_managementupdateServer <- function(input,output,session,dms_token,erp_token) {
+  #一般按纽,用于计数器显示
+
+  shiny::observeEvent(input$dl_standardCost_management_update,{
+    mdlGrossProfitAnalysisPkg::standard_management_delete(dms_token = dms_token)
+
+    mdlGrossProfitAnalysisPkg::standard_management_jherp_insert(erptoken = erp_token,dms_token = dms_token)
+
+    mdlGrossProfitAnalysisPkg::standard_management_update(dms_token = dms_token)
+
+    tsui::pop_notice("更新成功")
+
+
+  })
+}
